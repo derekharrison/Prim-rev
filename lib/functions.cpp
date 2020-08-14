@@ -131,3 +131,9 @@ void init_node_arr(std::vector <edge>& edge_set, node* node_arr, int size) {
         node_arr[i].in_q = true;
     }
 }
+
+void set_heap(node* A, node* B, int heap_size) {
+    for(int i = 1; i < heap_size + 1; ++i) {
+        A[i] = B[i-1];
+    }
+}

@@ -10,15 +10,19 @@
 #include "../inc/functions.hpp"
 #include "../inc/heap.hpp"
 
-Heap::Heap(float** weight_mat, int size) {
+Heap::Heap(bool** adj_mat, float** weight_mat, int size) {
     this->heap_size = size;
     this->length = size;
     this->A = new node[size+1];
     this->A[0].key = inf;
     this->B = new node[size];
-    this->min_node_arr = new node[this->heap_size+1];
+    this->min_node_arr = new node[size+1];
     this->weight_mat = float2D(size);
     init_weight_mat(this->weight_mat, weight_mat, size);
+    make_edge_set(this->edge_set, adj_mat, weight_mat, size);
+    init_node_arr(this->edge_set, this->B, size);
+    set_heap(this->A, this->B, size);
+    Heap::build_min_heap();
 }
 
 Heap::~Heap() {
@@ -63,21 +67,8 @@ void Heap::min_heapify(node A[], int i) {
 }
 
 void Heap::build_min_heap() {
-    for(int i = (this->heap_size)/2; i > 0; --i) {
+    for(int i = this->heap_size/2; i > 0; --i) {
         Heap::min_heapify(this->A, i);
-    }
-}
-
-void Heap::set_heap(node B[]) {
-    for(int i = 1; i < this->heap_size + 1; ++i) {
-        this->A[i] = B[i-1];
-        this->B[i-1] = B[i-1];
-    }
-}
-
-void Heap::get_heap(node B[]) {
-    for(int i = 1; i < this->heap_size + 1; ++i) {
-        B[i-1] = this->A[i];
     }
 }
 

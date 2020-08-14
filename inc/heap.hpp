@@ -18,16 +18,14 @@ private:
     node* B;
     float** weight_mat;
     node* min_node_arr;
+    std::vector <edge> edge_set;
 
 public:
-    Heap(float** weight_mat, int size);
+    Heap(bool** adj_mat, float** weight_mat, int size);
     ~Heap();
-    void set_heap(node B[]);
-    void get_heap(node B[]);
+
     node heap_extract_min();
-
     void prim_algo();
-
     int parent(int i);
     int left(int i);
     int right(int i);

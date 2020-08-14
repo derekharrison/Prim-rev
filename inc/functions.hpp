@@ -22,5 +22,6 @@ float** float2D(const int size);
 void delete_bool2D(bool **p, int size);
 void delete_float2D(float **p, int size);
 void init_node_arr(std::vector <edge>& edge_set, node* node_arr, int size);
+void set_heap(node* A, node* B, int heap_size);
 
 #endif /* FUNCTIONS_HPP_ */
