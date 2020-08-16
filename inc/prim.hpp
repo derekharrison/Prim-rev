@@ -1,5 +1,5 @@
 /*
- * heap.hpp
+ * prim.hpp
  *
  *  Created on: Aug 13, 2020
  *      Author: d-w-h
