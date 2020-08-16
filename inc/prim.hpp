@@ -15,7 +15,7 @@ private:
     int heap_size;
     int length;
     node* heap;
-    node* B;
+    node* node_array;
     float** weight_mat;
     node* min_node_arr;
     std::vector <edge> edge_set;

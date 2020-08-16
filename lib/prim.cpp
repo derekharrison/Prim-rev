@@ -15,20 +15,20 @@ Prim::Prim(bool** adj_mat, float** weight_mat, int size) {
     this->length = size;
     this->heap = new node[size+1];
     this->heap[0].key = inf;
-    this->B = new node[size];
+    this->node_array = new node[size];
     this->min_node_arr = new node[size+1];
     this->weight_mat = float2D(size);
     init_weight_mat(this->weight_mat, weight_mat, size);
     make_edge_set(this->edge_set, adj_mat, weight_mat, size);
-    init_node_arr(this->edge_set, this->B, size);
-    set_heap(this->heap, this->B, size);
+    init_node_arr(this->edge_set, this->node_array, size);
+    set_heap(this->heap, this->node_array, size);
     Prim::build_min_heap();
 }
 
 Prim::~Prim() {
     delete [] this->heap;
-    delete [] this->B;
-    delete [] min_node_arr;
+    delete [] this->node_array;
+    delete [] this->min_node_arr;
     delete_float2D(this->weight_mat, this->length);
 }
 
@@ -100,8 +100,8 @@ void Prim::print_heap() {
 void Prim::print_mst() {
     float total_weight_mst = 0.0;
     for(int i = 1; i < this->length; ++i) {
-        int parent_index = this->B[i].parent_index;
-        int current_index = this->B[i].index;
+        int parent_index = this->node_array[i].parent_index;
+        int current_index = this->node_array[i].index;
         float weight = this->weight_mat[parent_index][current_index];
         total_weight_mst += weight;
         printf("went from %i to %i totaling: %.4f\n", parent_index, current_index, weight);
@@ -115,7 +115,7 @@ node Prim::heap_extract_min() {
         printf("heap size is less than 1\n");
     }
     node min = this->heap[1];
-    this->B[this->heap[1].index].in_q = false;
+    this->node_array[this->heap[1].index].in_q = false;
     this->heap[1] = this->heap[this->heap_size];
     this->heap_size = this->heap_size - 1;
     Prim::min_heapify(this->heap, 1);
@@ -137,12 +137,12 @@ void Prim::prim_algo() {
             int start_vertex = min_node.index;
             int end_vertex = min_node.adj_nodes[i];
             int index_a = index_map[end_vertex];
-            node v = this->B[end_vertex];
+            node v = this->node_array[end_vertex];
             if(v.in_q && this->weight_mat[start_vertex][end_vertex] < v.key) {
-                this->B[end_vertex].parent_index = min_node.index;
-                this->B[end_vertex].index = end_vertex;
-                this->B[end_vertex].pi = &min_node_arr[it];
-                this->B[end_vertex].key = this->weight_mat[start_vertex][end_vertex];
+                this->node_array[end_vertex].parent_index = min_node.index;
+                this->node_array[end_vertex].index = end_vertex;
+                this->node_array[end_vertex].pi = &min_node_arr[it];
+                this->node_array[end_vertex].key = this->weight_mat[start_vertex][end_vertex];
                 this->heap[index_a].key = this->weight_mat[start_vertex][end_vertex];
             }
         }
