@@ -8,7 +8,7 @@
 #include <iostream>
 
 #include "../inc/functions.hpp"
-#include "../inc/heap.hpp"
+#include "../inc/prim.hpp"
 
 Prim::Prim(bool** adj_mat, float** weight_mat, int size) {
     this->heap_size = size;

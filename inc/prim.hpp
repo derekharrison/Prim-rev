@@ -5,8 +5,8 @@
  *      Author: d-w-h
  */
 
-#ifndef HEAP_HPP_
-#define HEAP_HPP_
+#ifndef PRIM_HPP_
+#define RPIM_HPP_
 
 #include "user_types.hpp"
 
@@ -37,4 +37,4 @@ public:
     void print_mst();
 };
 
-#endif /* HEAP_HPP_ */
+#endif /* PRIM_HPP_ */

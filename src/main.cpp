@@ -10,7 +10,7 @@
 #include <vector>
 
 #include "../inc/functions.hpp"
-#include "../inc/heap.hpp"
+#include "../inc/prim.hpp"
 #include "../inc/user_types.hpp"
 
 int main(int argc, char* argv[])
