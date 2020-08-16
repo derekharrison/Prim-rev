@@ -57,7 +57,7 @@ void populate_adj_and_weight(bool** adj_mat, float** weight_mat, int size_graph,
     init_adj_mat(adj_mat, size_graph);
     init_weight_mat(weight_mat, size_graph);
 
-    srand(time(NULL));
+//    srand(time(NULL));
     float max_weight = 10;
     for(int i = 0; i < size_graph; ++i)
         for(int j = i; j < size_graph; ++j) {

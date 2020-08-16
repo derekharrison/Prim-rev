@@ -23,14 +23,14 @@ int main(int argc, char* argv[])
     /* Populate adjancy and weight matrices with random data */
     populate_adj_and_weight(adj_mat, weight_mat, size, density);
 
-    /* Create, set and build heap */
-    Heap my_heap(adj_mat, weight_mat, size);
+    /* Create Prim object */
+    Prim myg(adj_mat, weight_mat, size);
 
     /* Execute Prim's algorithm */
-    my_heap.prim_algo();
+    myg.prim_algo();
 
     /* Print minimum spanning tree */
-    my_heap.print_mst();
+    myg.print_mst();
 
     /* Free allocated data */
     delete_bool2D(adj_mat, size);
