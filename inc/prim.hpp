@@ -35,6 +35,7 @@ public:
     bool min_heap_verify();
     void print_heap();
     void print_mst();
+    void print_size_mst();
 };
 
 #endif /* PRIM_HPP_ */
