@@ -134,7 +134,7 @@ node Prim::heap_extract_min() {
 
 void Prim::prim_algo() {
     int* index_map = new int[this->length+1];
-    index_map[0] = 0; // to ensure that index_map doesn't contain garbage at index 0
+    index_map[0] = 0;
     for(int it = 0; it < this->length; ++it) {
         node min_node = Prim::heap_extract_min();
         min_node_arr[it] = min_node;
