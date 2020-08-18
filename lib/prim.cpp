@@ -99,7 +99,7 @@ void Prim::print_heap() {
 }
 
 void Prim::print_mst() {
-	double total_weight_mst = 0.0;
+    double total_weight_mst = 0.0;
     for(int i = 1; i < this->length; ++i) {
         int parent_index = this->node_array[i].parent_index;
         int current_index = this->node_array[i].index;
