@@ -30,7 +30,6 @@ int main(int argc, char* argv[])
 
     /* Print minimum spanning tree */
     myg.print_mst();
-    myg.print_size_mst();
 
     /* Free allocated data */
     delete_bool2D(adj_mat, size);

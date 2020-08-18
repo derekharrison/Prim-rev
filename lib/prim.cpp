@@ -99,21 +99,13 @@ void Prim::print_heap() {
 }
 
 void Prim::print_mst() {
-    for(int i = 1; i < this->length; ++i) {
-        int parent_index = this->node_array[i].parent_index;
-        int current_index = this->node_array[i].index;
-        float weight = this->weight_mat[parent_index][current_index];
-        printf("went from %i to %i totaling: %.4f\n", parent_index, current_index, weight);
-    }
-}
-
-void Prim::print_size_mst() {
-    float total_weight_mst = 0.0;
+	double total_weight_mst = 0.0;
     for(int i = 1; i < this->length; ++i) {
         int parent_index = this->node_array[i].parent_index;
         int current_index = this->node_array[i].index;
         float weight = this->weight_mat[parent_index][current_index];
         total_weight_mst += weight;
+        printf("went from %i to %i totaling: %.4f\n", parent_index, current_index, weight);
     }
 
     printf("total weight mst: %.8f\n", total_weight_mst);
