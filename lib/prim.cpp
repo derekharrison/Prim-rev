@@ -129,7 +129,7 @@ void Prim::prim_algo() {
     index_map[0] = 0;
     for(int it = 0; it < this->length; ++it) {
         node min_node = Prim::heap_extract_min();
-        min_node_arr[it] = min_node;
+        this->min_node_arr[it] = min_node;
         for(int i = 1; i < this->heap_size + 1; ++i) {
             index_map[this->heap[i].index] = i;
         }
@@ -142,7 +142,7 @@ void Prim::prim_algo() {
             if(v.in_q && this->weight_mat[start_vertex][end_vertex] < v.key) {
                 this->node_array[end_vertex].parent_index = min_node.index;
                 this->node_array[end_vertex].index = end_vertex;
-                this->node_array[end_vertex].pi = &min_node_arr[it];
+                this->node_array[end_vertex].pi = &this->min_node_arr[it];
                 this->node_array[end_vertex].key = this->weight_mat[start_vertex][end_vertex];
                 this->heap[index_a].key = this->weight_mat[start_vertex][end_vertex];
             }
